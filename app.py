@@ -5,18 +5,18 @@ from datetime import datetime, timedelta
 # 👇 [설정] 구글폼 주소
 # ==========================================
 URL_1 = "https://cooknchefnews.com/news/view/1065578321085578" # 1라운드 기사
-URL_2 = "https://cooknchefnews.com/news/view/1065578393220176" # 2라운드 기사
+URL_2 = "https://forms.gle/XfWqyQavBjpNNCeq8" # 2라운드 기사
 # ==========================================
 
 # 날짜별 암호
 DAILY_CODES = {
-    "2026-01-02": "COOK",   "2026-01-03": "CHEF",
-    "2026-01-04": "FOOD",   "2026-01-05": "TASTE",
-    "2026-01-06": "YUMMY",  "2026-01-07": "WINNER",
-    "2026-01-08": "MASTER", "2026-01-09": "LEGEND",
-    "2026-01-10": "GLOBAL", "2026-01-11": "TOP",
-    "2026-01-12": "FINAL",  "2026-01-13": "VICTORY",
-    "default": "COOK"
+    "2026-01-02": "0617",   "2026-01-03": "2174",
+    "2026-01-04": "2001",   "2026-01-05": "4827",
+    "2026-01-06": "9103",  "2026-01-07": "2759",
+    "2026-01-08": "6384", "2026-01-09": "1496",
+    "2026-01-10": "8062", "2026-01-11": "5931",
+    "2026-01-12": "7248",  "2026-01-13": "3580",
+    "default": "9645"
 }
 
 # 한국 시간 계산
@@ -24,8 +24,8 @@ now = datetime.utcnow() + timedelta(hours=9)
 today_str = now.strftime("%Y-%m-%d")
 
 # 기간 설정
-ROUND1_END = datetime(2026, 1, 6, 17, 0)
-ROUND2_START = datetime(2026, 1, 7, 0, 0)
+ROUND1_END = datetime(2026, 1, 4, 17, 0)
+ROUND2_START = datetime(2026, 1, 5, 0, 0)
 ROUND2_END = datetime(2026, 1, 13, 17, 0)
 
 target_url = URL_1 
@@ -37,7 +37,7 @@ if now <= ROUND1_END:
     status_msg = "1라운드 (결승 진출자 예측)"
 elif now >= ROUND2_START and now <= ROUND2_END:
     target_url = URL_2
-    status_msg = "2라운드 (최종 우승자 예측)"
+    status_msg = "최종 우승자 예측"
     round_color = "#2563EB"
 elif now > ROUND2_END:
     status_msg = "종료"
@@ -92,3 +92,4 @@ else:
     st.markdown(f"<h4 style='text-align:center; color:#666;'>📅 {today_str} 오늘의 코드</h4>", unsafe_allow_html=True)
     st.markdown(f"<div class='big-code'>{today_code}</div>", unsafe_allow_html=True)
     st.markdown(f"<p class='info'><b>{status_msg}</b><br>이 코드를 기억하고 하단 배너를 클릭하세요!</p>", unsafe_allow_html=True)
+
